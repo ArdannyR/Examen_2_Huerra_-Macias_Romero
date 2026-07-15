@@ -1,0 +1,20 @@
+# Construir un docker-compose.yml
+docker compose up --build
+
+# Eliminar todos los contenedores
+docker compose down
+
+# Validar un docker-compose.yml
+docker compose config
+
+# Ver logs
+docker compose logs
+
+# Ver logs de un servicio específico
+docker compose logs <service_name>
+
+# Eliminar todos los contenedores y redes
+docker compose down
+
+# Eliminar todos los contenedores, redes y volúmenes
+docker compose down -v
