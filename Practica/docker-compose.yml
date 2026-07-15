@@ -63,7 +63,7 @@ services:
     container_name: preparador
     command: python preparador.py
     volumes:
-      - mr_data:/app/splits
+      - ./splits:/app/splits
     depends_on:
       - nginx
 
@@ -73,7 +73,7 @@ services:
     container_name: mapper1
     command: python mapper.py splits/part_01.txt
     volumes:
-      - mr_data:/app/splits
+      - ./splits:/app/splits
     depends_on:
       preparador:
         condition: service_completed_successfully
@@ -83,7 +83,7 @@ services:
     container_name: mapper2
     command: python mapper.py splits/part_02.txt
     volumes:
-      - mr_data:/app/splits
+      - ./splits:/app/splits
     depends_on:
       preparador:
         condition: service_completed_successfully
@@ -93,7 +93,7 @@ services:
     container_name: mapper3
     command: python mapper.py splits/part_03.txt
     volumes:
-      - mr_data:/app/splits
+      - ./splits:/app/splits
     depends_on:
       preparador:
         condition: service_completed_successfully
@@ -104,7 +104,7 @@ services:
     container_name: reducer
     command: python reducer.py
     volumes:
-      - mr_data:/app/splits
+      - ./splits:/app/splits
     depends_on:
       mapper1:
         condition: service_completed_successfully
