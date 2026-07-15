@@ -18,7 +18,7 @@ services:
       timeout: 5s
       retries: 5
 
-  # Servidores Flask (API)
+  # Servidores Flask
   server1:
     build: ./api
     container_name: flask_server1
@@ -57,8 +57,7 @@ services:
       - server1
       - server2
 
-  # --- MAP REDUCE WORKFLOW ---
-  # Preparador: Obtiene datos del NGINX y los divide en chunks
+  # Divide los datos del nginx
   preparador:
     build: ./mapreduce
     container_name: preparador
@@ -68,7 +67,7 @@ services:
     depends_on:
       - nginx
 
-  # Mappers: Procesan los chunks en paralelo
+  # Procesa cada parte en paralelo
   mapper1:
     build: ./mapreduce
     container_name: mapper1
@@ -99,7 +98,7 @@ services:
       preparador:
         condition: service_completed_successfully
 
-  # Reducer: Agrupa resultados y calcula métricas
+  # Combina y procesa los datos para mostrar los resultados
   reducer:
     build: ./mapreduce
     container_name: reducer
