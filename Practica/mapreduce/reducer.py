@@ -10,7 +10,7 @@ def run_reducer():
         print("No se encontró el directorio splits.")
         return
 
-    # Fase de Shuffle & Reduce
+    # Fase de división
     for file in os.listdir(splits_dir):
         if file.endswith(".out"):
             with open(os.path.join(splits_dir, file), 'r') as f:
@@ -43,20 +43,20 @@ def run_reducer():
 
     print("\n--- RESULTADOS DEL ANALISIS MAPREDUCE ---")
     
-    # 1. Video más visto
+    # Video mas visto
     if video_stats:
         video_mas_visto = max(video_stats.keys(), key=lambda v: video_stats[v]['view'])
         print(f"Video mas visto: {video_mas_visto} (Views: {video_stats[video_mas_visto]['view']})")
         
-        # 2. Video con más likes
+        # Video con mas likes
         video_mas_likes = max(video_stats.keys(), key=lambda v: video_stats[v]['like'])
         print(f"Video con mas likes: {video_mas_likes} (Likes: {video_stats[video_mas_likes]['like']})")
         
-        # 3. Video más comentado
+        # Video mas comentado
         video_mas_comentado = max(video_stats.keys(), key=lambda v: video_stats[v]['comment'])
         print(f"Video mas comentado: {video_mas_comentado} (Comments: {video_stats[video_mas_comentado]['comment']})")
         
-        # 4. Mostrar el video con mayor Ratio de interacción
+        # Mostrar el video con mayor cantidad de interacción
         mejor_video = None
         mejor_ratio = -1
         
@@ -70,12 +70,12 @@ def run_reducer():
                     
         print(f"Video con mayor Ratio de Interaccion: {mejor_video} (Ratio: {mejor_ratio:.2f})")
     
-    # 5. Usuario más recurrente
+    # Usuario mas recurrente
     if user_stats:
         usuario_recurrente = max(user_stats, key=user_stats.get)
         print(f"Usuario mas recurrente: {usuario_recurrente} ({user_stats[usuario_recurrente]} interacciones)")
         
-    # 6. Hora donde haya más interacción con el público
+    # Hora donde haya mas interacción con el público
     if hour_stats:
         hora_interaccion = max(hour_stats, key=hour_stats.get)
         print(f"Hora con mas interaccion: {hora_interaccion}:00 ({hour_stats[hora_interaccion]} interacciones)")

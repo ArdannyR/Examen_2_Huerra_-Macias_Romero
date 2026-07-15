@@ -20,11 +20,10 @@ def obtener_datos():
         cursor.execute("SELECT usuario, accion, fecha, hora, short FROM redes")
         rows = cursor.fetchall()
         
-        # Generar salida en texto plano
+        # Salida en texto plano
         output = []
         for row in rows:
-            # row: ('Diego', 'view', datetime.date(2026, 7, 8), datetime.timedelta(seconds=21660), 'video8')
-            # Formateamos fecha y hora a string
+            # Se formatea fecha y hora a string
             usuario = str(row[0])
             accion = str(row[1])
             fecha = str(row[2])
@@ -47,5 +46,4 @@ def health_check():
     return f"OK from {server_id}\n", 200
 
 if __name__ == '__main__':
-    # Ejecutamos en el puerto 5000, accesible desde cualquier IP (0.0.0.0)
     app.run(host='0.0.0.0', port=5000)

@@ -1,11 +1,11 @@
-CREATE DATABASE examenad;
+CREATE DATABASE IF NOT EXISTS examenad;
 USE examenad;
 CREATE TABLE redes (
     id INT AUTO_INCREMENT PRIMARY KEY,
     usuario VARCHAR(15) NOT NULL,
     accion VARCHAR(10) NOT NULL,
-    fecha DATE NOT NULL,
-    hora TIME NOT NULL,
+    fecha VARCHAR(15) NOT NULL,
+    hora VARCHAR(15) NOT NULL,
     short VARCHAR(10) NOT NULL
 );
 

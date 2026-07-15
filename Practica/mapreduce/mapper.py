@@ -18,13 +18,13 @@ def run_mapper(filename):
             if len(parts) >= 5:
                 usuario, accion, fecha, hora, video = parts[0], parts[1], parts[2], parts[3], parts[4]
                 
-                # 1. Metricas de video
+                # Datos del video
                 f_out.write(f"VIDEO_STAT\t{video}\t{accion}\t1\n")
                 
-                # 2. Usuario recurrente
+                # Datos del usuario recurrente
                 f_out.write(f"USER_STAT\t{usuario}\t1\n")
                 
-                # 3. Hora con mas interaccion
+                # Datos de la hora con mas interaccion
                 hora_corta = hora.split(':')[0]
                 f_out.write(f"HOUR_STAT\t{hora_corta}\t1\n")
 
